@@ -4,35 +4,31 @@ pipeline {
 
   stages {
 
-    stage('Checkout') {
+    stage('Clone Repository') {
 
       steps {
 
-        // This step checks out your source code from the repository.
-
-        // If your Jenkinsfile and Python script are in the same folder, it will be checked out here.
-
-        checkout scm
-
-      }
-
-    }
-
-    stage('Run Python Script') {
-
-      steps {
+        // Define the Git repository URL and credentials (if required)
 
         script {
 
-          // Assuming your Python script is named 'my_script.py'
+          def gitRepoUrl = 'https://github.com/rohanmane21/Python.git'
 
-          def pythonScript = 'my_script.py'
+          def gitCredentialsId = 'Git-Token' // Optional, if using credentials
 
-          // Execute the Python script using the 'sh' step
+          // Clone the repository
 
-          // You may need to specify the Python interpreter if it's not in the PATH
+          checkout([$class: 'GitSCM',
 
-          sh "python ${pythonScript}"
+            branches: [[name: '*/Testing']],
+
+            doGenerateSubmoduleConfigurations: false,
+
+            extensions: [],
+
+            userRemoteConfigs: [[credentialsId: gitCredentialsId, url: gitRepoUrl]]
+
+          ])
 
         }
 
@@ -40,22 +36,20 @@ pipeline {
 
     }
 
-  }
+    stage("Run Python file"){
 
-  post {
+      steps{
 
-    success {
+        sh 'python test.py'
 
-      echo 'Python script ran successfully'
+      }
 
-    }
-
-    failure {
-
-      echo 'Python script execution failed'
-
-    }
+    }// Add more stages for building, testing, deploying, etc.
 
   }
+
+  // Post-build actions, notifications, etc.
 
 }
+
+
