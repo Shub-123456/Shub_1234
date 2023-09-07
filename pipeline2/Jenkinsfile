@@ -36,15 +36,15 @@ pipeline {
 
     }
 
-    // stage("Run Python file"){
+    stage("Run Python file"){
 
-    //   steps{
+      steps{
 
-    //     sh 'python test.py'
+        sh 'python pipeline2/my_script.py'
 
-    //   }
+      }
 
-    // }// Add more stages for building, testing, deploying, etc.
+    }// Add more stages for building, testing, deploying, etc.
 
   }
 
