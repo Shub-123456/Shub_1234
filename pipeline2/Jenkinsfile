@@ -12,15 +12,15 @@ pipeline {
 
         script {
 
-          def gitRepoUrl = 'https://github.com/rohanmane21/Python.git'
+          def gitRepoUrl = 'https://github.com/Shub-123456/Shub_1234.git'
 
-          def gitCredentialsId = 'Git-Token' // Optional, if using credentials
+          def gitCredentialsId = 'Test1' // Optional, if using credentials
 
           // Clone the repository
 
           checkout([$class: 'GitSCM',
 
-            branches: [[name: '*/Testing']],
+            branches: [[name: '*/testing']],
 
             doGenerateSubmoduleConfigurations: false,
 
