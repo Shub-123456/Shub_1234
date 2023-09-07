@@ -1,0 +1,55 @@
+pipeline {
+
+  agent any
+
+  stages {
+
+    stage('Clone Repository') {
+
+      steps {
+
+        // Define the Git repository URL and credentials (if required)
+
+        script {
+
+          def gitRepoUrl = 'https://github.com/Shub-123456/Shub_1234.git'
+
+          def gitCredentialsId = 'Test1' // Optional, if using credentials
+
+          // Clone the repository
+
+          checkout([$class: 'GitSCM',
+
+            branches: [[name: '*/testing']],
+
+            doGenerateSubmoduleConfigurations: false,
+
+            extensions: [],
+
+            userRemoteConfigs: [[credentialsId: gitCredentialsId, url: gitRepoUrl]]
+
+          ])
+
+        }
+
+      }
+
+    }
+
+    stage("Run Python file"){
+
+      steps{
+
+        sh 'python test.py'
+
+      }
+
+    }// Add more stages for building, testing, deploying, etc.
+
+  }
+
+  // Post-build actions, notifications, etc.
+
+}
+
+
