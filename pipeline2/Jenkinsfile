@@ -14,7 +14,7 @@ pipeline {
 
           def gitRepoUrl = 'https://github.com/Shub-123456/Shub_1234.git'
 
-          def gitCredentialsId = 'Test1' // Optional, if using credentials
+          def gitCredentialsId = 'git-token' // Optional, if using credentials
 
           // Clone the repository
 
@@ -36,15 +36,15 @@ pipeline {
 
     }
 
-    stage("Run Python file"){
+    // stage("Run Python file"){
 
-      steps{
+    //   steps{
 
-        sh 'python test.py'
+    //     sh 'python test.py'
 
-      }
+    //   }
 
-    }// Add more stages for building, testing, deploying, etc.
+    // }// Add more stages for building, testing, deploying, etc.
 
   }
 
