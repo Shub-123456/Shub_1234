@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from a Git repository
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Build the code using a shell script
+                sh 'your_build_command_here'
+            }
+        }
+    }
+    
+    post {
+        success {
+            // Archive build artifacts
+            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+        }
+    }
+}
