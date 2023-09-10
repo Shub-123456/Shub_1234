@@ -15,9 +15,15 @@ pipeline {
                 // Build the code using a shell script
                 sh 'mvn clean install'
             }
+
         }
     }
-    
+
+   stage('Verify Maven') {
+      steps {
+        sh 'mvn --version'
+    }
+}
     post {
         success {
             // Archive build artifacts
