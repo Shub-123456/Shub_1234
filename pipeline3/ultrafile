@@ -18,12 +18,6 @@ pipeline {
 
         }
     }
-
-   stage('Verify Maven') {
-      steps {
-        sh 'mvn --version'
-    }
-}
     post {
         success {
             // Archive build artifacts
