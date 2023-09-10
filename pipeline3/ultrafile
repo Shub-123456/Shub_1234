@@ -4,15 +4,16 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from a Git repository
+                 // Checkout code from a Git repository
                 checkout scm
+        
             }
         }
         
         stage('Build') {
             steps {
                 // Build the code using a shell script
-                sh 'your_build_command_here'
+                sh 'mvn clean install'
             }
         }
     }
