@@ -21,7 +21,7 @@ pipeline {
     post {
         success {
             // Archive build artifacts
-            archiveArtifacts artifacts: 'pipeline3/ultrafile', allowEmptyArchive: true
+            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
         }
     }
 }
