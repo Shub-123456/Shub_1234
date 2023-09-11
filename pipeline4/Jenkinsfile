@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('test AWS credentials') {
+            steps {
+                withAWS(credentials: 'bob', region: 'ap-south-1') 
+                {
+                    sh 'python pipeline4/ultrafile.py'
+                }
+            }
+        }
+    }
+}
