@@ -10,8 +10,7 @@ def create_policy():
 			"Sid": "Statement1",
 			"Effect": "Allow",
 			"Action": [
-				"lambda:ListCodeSigningConfigs",
-				"s3-object-lambda:*"
+				"ec2:*"
 			],
 			"Resource": []
 		}
