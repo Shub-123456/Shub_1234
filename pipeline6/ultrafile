@@ -4,9 +4,9 @@ pipeline {
         stage('policy-user-map') {
             steps {
                 script {
-                    def policyJson = httpRequest(url: 'https://raw.githubusercontent.com/yourusername/yourrepository/main/jenkinsfile1.json')
-                    def userJson = httpRequest(url: 'https://raw.githubusercontent.com/yourusername/yourrepository/main/jenkinsfile2.json')
-                    def mappingJson = httpRequest(url: 'https://raw.githubusercontent.com/yourusername/yourrepository/main/jenkinsfile3.json')
+                    def policyJson = httpRequest(url: 'https://github.com/Shub-123456/Shub_1234/blob/main/pipeline6/jenkinsfile1.json')
+                    def userJson = httpRequest(url: 'https://github.com/Shub-123456/Shub_1234/blob/main/pipeline6/jenkinsfile2.json')
+                    def mappingJson = httpRequest(url: 'https://github.com/Shub-123456/Shub_1234/blob/main/pipeline6/jenkinsfile3.json')
                     
                     // Use the JSON data to create/update IAM resources
                     // Example:
@@ -19,16 +19,19 @@ pipeline {
         stage('Build') {
             steps {
                 // Your build steps here
+                 sh 'echo "Performing Build Steps"'
             }
         }
         stage('Test') {
             steps {
                 // Your test steps here
+                sh 'echo "Performing Test Steps"'
             }
         }
         stage('Deploy') {
             steps {
                 // Your deployment steps here
+                 sh 'echo "Performing Deployment Steps"'
             }
         }
     }
