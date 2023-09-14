@@ -19,19 +19,19 @@ pipeline {
         stage('Build') {
             steps {
                 // Your build steps here
-                 sh 'echo "Performing Build Steps"'
+                 sh 'python pipeline6/jenkinsfile1.py'
             }
         }
         stage('Test') {
             steps {
                 // Your test steps here
-                sh 'echo "Performing Test Steps"'
+                sh 'python pipeline6/jenkinsfile2.py'
             }
         }
         stage('Deploy') {
             steps {
                 // Your deployment steps here
-                 sh 'echo "Performing Deployment Steps"'
+                 sh 'python pipeline6/jenkinsfile3.py'
             }
         }
     }
