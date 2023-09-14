@@ -1,0 +1,19 @@
+{
+
+        "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "Statement1",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ec2:*",
+                        "iam:GetAccountSummary",
+                        "iam:GetLoginProfile",
+                        "iam:GetUser"
+                    ],
+                "Resource": "arn:aws:ec2:::*",
+                "Resource": "arn:aws:iam:::*"
+            }
+        ]
+
+    }
