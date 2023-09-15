@@ -1,37 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('policy-user-map') {
+        stage('test AWS credentials') {
             steps {
-                script {
-                    def policyJson = httpRequest(url: 'https://github.com/Shub-123456/Shub_1234/blob/main/pipeline6/jenkinsfile1.json')
-                    def userJson = httpRequest(url: 'https://github.com/Shub-123456/Shub_1234/blob/main/pipeline6/jenkinsfile2.json')
-                    def mappingJson = httpRequest(url: 'https://github.com/Shub-123456/Shub_1234/blob/main/pipeline6/jenkinsfile3.json')
-                    
-                    // Use the JSON data to create/update IAM resources
-                    // Example:
-                    // awsIAMCreateOrUpdatePolicy(policyJson)
-                    // awsIAMCreateOrUpdateUser(userJson)
-                    // awsIAMCreateOrUpdateRoleMapping(mappingJson)
+                withAWS(credentials: 'bob', region: 'ap-south-1') 
+                {
+                    sh 'python pipeline6/jenkinsfile2.py'
                 }
-            }
-        }
-        stage('Build') {
-            steps {
-                // Your build steps here
-                 sh 'python pipeline6/jenkinsfile1.json'
-            }
-        }
-        stage('Test') {
-            steps {
-                // Your test steps here
-                sh 'python pipeline6/jenkinsfile2.json'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                // Your deployment steps here
-                 sh 'python pipeline6/jenkinsfile3.json'
             }
         }
     }
