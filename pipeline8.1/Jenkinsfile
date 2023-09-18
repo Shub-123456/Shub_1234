@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    stages {
+        stage('build') {
+            steps {
+                withAWS(credentials: 'bob', region: 'ap-south-1') 
+                {
+                    sh 'python pipeline8/create_policy.py'
+                }
+            }
+        }
+      stage('build') {
+            steps {
+                withAWS(credentials: 'bob', region: 'ap-south-1') 
+                {
+                    sh 'python pipeline8/create_policy.py'
+                }
+            }
+        }
+      stage('build') {
+            steps {
+                withAWS(credentials: 'bob', region: 'ap-south-1') 
+                {
+                    sh 'python pipeline8/create_policy.py'
+                }
+            }
+        }
+    }
+}
