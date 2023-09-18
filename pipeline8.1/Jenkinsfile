@@ -5,7 +5,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'bob', region: 'ap-south-1') 
                 {
-                    sh 'python pipeline8/create_policy.py'
+                    sh 'python pipeline8.1/create_(policy,user,atta.policy).py'
                 }
             }
         }
@@ -13,7 +13,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'bob', region: 'ap-south-1') 
                 {
-                    sh 'python pipeline8/create_policy.py'
+                    sh 'python pipeline8.1/create_(policy,user,atta.policy).py'
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps {
                 withAWS(credentials: 'bob', region: 'ap-south-1') 
                 {
-                    sh 'python pipeline8/create_policy.py'
+                    sh 'python pipeline8.1/create_(policy,user,atta.policy).py'
                 }
             }
         }
