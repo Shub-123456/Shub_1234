@@ -6,7 +6,7 @@ def create_policy():
     with open('pipeline8/policy.json', 'r') as f:
         policy_document = json.load(f)
     response = user.create_policy(
-        PolicyName="abc",
+        PolicyName="abd",
         PolicyDocument=json.dumps(policy_document) 
     )
 def create_user():
