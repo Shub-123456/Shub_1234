@@ -11,7 +11,7 @@ pipeline {
       stage('Adding git credentials'){
             steps {
                 script {
-                    git branch: 'main', credentialsId: 'git_token2', url: env.GIT_REPO_URL
+                    git branch: 'main', credentialsId: 'HI', url: env.GIT_REPO_URL
                 }
             }
         }
