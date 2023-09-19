@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('Create IAM User') {
+            steps {
+                withAWS(credentials: 'bob', region: 'ap-south-1') 
+                {
+                    sh 'python pipeline7/create_user/create_user.py'
+                }
+            }
+        }
+    }
+}
