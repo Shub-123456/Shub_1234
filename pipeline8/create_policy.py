@@ -13,5 +13,5 @@ def attach_policy():
     UserName= 'tiger',
     PolicyArn='arn:aws:iam::655523803653:policy/abc'
 )
-attach_policy()
+# attach_policy()
 
