@@ -11,12 +11,12 @@ def create_policy():
     )
 def create_user():
     response = user.create_user(
-        UserName='jawan'
+        UserName='pathan'
     )
-# create_user()
+create_user()
 def attach_policy():
     response = user.attach_user_policy(
-    UserName= 'jawan',
+    UserName= 'pathan',
     PolicyArn='arn:aws:iam::655523803653:policy/abc'
 )
 attach_policy()
