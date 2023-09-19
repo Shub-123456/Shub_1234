@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    stages {
+        stage('Create Policy') {
+            steps {
+                withAWS(credentials: 'bob', region: 'ap-south-1') 
+                {
+                    sh 'python pipeline7/map_policy/map.py'
+                }
+            }
+        }
+    }
+}
