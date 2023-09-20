@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_DEFAULT_REGION = 'ap-south-1'
-        AWS_ACCESS_KEY_ID     = credentials('bob')
+        AWS_ACCESS_KEY_ID     = credentials('tiger2')
         IAM_USERNAME = 'jawan'
         GIT_REPO_URL = 'https://github.com/Shub-123456/Shub_1234.git'
     }
