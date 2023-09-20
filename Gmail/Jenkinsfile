@@ -20,7 +20,7 @@ pipeline {
                 script {
                     sh """
                         aws iam create-user --user-name ${env.IAM_USERNAME}
-                    """
+                     """
                 }
             }
         }
