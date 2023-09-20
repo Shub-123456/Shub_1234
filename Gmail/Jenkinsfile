@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_DEFAULT_REGION = 'ap-south-1'
-        AWS_ACCESS_KEY_ID     = credentials('bob')
+        AWS_ACCESS_KEY_ID     = credentials('bob2')
         IAM_USERNAME = 'tiger2'
         GIT_REPO_URL = 'https://github.com/Shub-123456/Shub_1234.git'
     }
@@ -11,7 +11,7 @@ pipeline {
       stage('Adding git credentials'){
             steps {
                 script {
-                    git branch: 'main', credentialsId: 'bob', url: env.GIT_REPO_URL
+                    git branch: 'main', credentialsId: 'bob2', url: env.GIT_REPO_URL
                 }
             }
         }
