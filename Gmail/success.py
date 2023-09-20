@@ -1,28 +1,55 @@
-import smtplib
-from email.mime.multipart import MIMEMultipart
+import boto3
+
+from botocore.exceptions import NoCredentialsError
+
 from email.mime.text import MIMEText
-# Gmail account details
-gmail_user = 'shubham.chide@gmail.com' # Your Gmail address
-gmail_app_password = 'Shub_1234' # Use the App Password generated earlier
-# Email details
-to_email = 'chakarnilkanth@gmail.com' # Recipient's email address
-subject = 'Shubham Chide'
-message = 'Pipeline run successful.'
-# Create a MIMEText object with your message
+
+from email.mime.multipart import MIMEMultipart
+
+# AWS SES credentials
+
+aws_access_key = 'AKIAZRICDOICSRYQJQNF'
+
+aws_secret_key = 'MgZ0WD2TRTg4E6fM1/eKV0BctblJkhCSUYf9SDXr'
+
+aws_region = 'ap-south-1' # Replace with your AWS region
+
+# Sender and recipient
+
+sender_email = 'shubham.chide@gmail.com'
+
+recipient_email = 'chakarnilkanth@gmail.com'
+
+# Create the email message
+
+subject = 'Hello sir'
+
+message = 'we are students of technobrillient from devops batch!!!'
+
 msg = MIMEMultipart()
-msg['From'] = gmail_user
-msg['To'] = to_email
+
+msg['From'] = sender_email
+
+msg['To'] = recipient_email
+
 msg['Subject'] = subject
+
 msg.attach(MIMEText(message, 'plain'))
-# Connect to Gmail's SMTP server
+
+# Connect to the SES service
+
 try:
-  server = smtplib.SMTP('smtp.elasticemail.com', 2525)
-  server.starttls()
-  server.login(gmail_user, gmail_app_password)
-  # Send the email
-  server.sendmail(gmail_user, to_email, msg.as_string())
-  print('Email sent successfully!')
+
+  ses_client = boto3.client('ses', region_name=aws_region, aws_access_key_id=aws_access_key, aws_secret_access_key=aws_secret_key)
+
+  response = ses_client.send_raw_email(Source=sender_email, Destinations=[recipient_email], RawMessage={'Data': msg.as_string()})
+
+  print("Email sent successfully! Message ID:", response['MessageId'])
+
+except NoCredentialsError:
+
+  print("AWS credentials not available.")
+
 except Exception as e:
-  print(f'Error: {str(e)}')
-finally:
-  server.quit()
+
+  print("An error occurred:", str(e))
