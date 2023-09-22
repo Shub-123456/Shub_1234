@@ -8,9 +8,9 @@ from email.mime.multipart import MIMEMultipart
 
 # AWS SES credentials
 
-aws_access_key = 'AKIAZRICDOICT74WR3BK'
+aws_access_key = 'AKIAZRICDOIC5FCCXJVL'
 
-aws_secret_key = 'cA1rAMFcgbdQcxdES4+FiUhCsP2jebKn77pqPk9J'
+aws_secret_key = 'HpM4WuNk7abr3OMkWYvXY45rjewyuoLg/EEfN3Be'
 
 aws_region = 'ap-south-1' # Replace with your AWS region
 
