@@ -13,7 +13,7 @@ pipeline {
       stage('Adding git credentials'){
             steps {
                 script {
-                    git branch: 'main', credentialsId: 'b6eeb0c5-6a67-4a2b-aab1-5ab5db3ce00f', url: env.GIT_REPO_URL
+                    git branch: 'main', credentialsId: 'git', url: env.GIT_REPO_URL
                 }
             }
         }
