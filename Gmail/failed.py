@@ -44,7 +44,7 @@ try:
 
   response = ses_client.send_raw_email(Source=sender_email, Destinations=[recipient_email], RawMessage={'Data': msg.as_string()})
 
-  print("Email sent successfully! Message ID:", response['MessageId'])
+  print("Email sent failed! Message ID:", response['MessageId'])
 
 except NoCredentialsError:
 
