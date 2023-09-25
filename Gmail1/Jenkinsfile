@@ -27,10 +27,10 @@ pipeline {
     }
   post{
     success{
-      sh'python Gmail/success.py '
+      sh'python Gmail1/success.py '
     }
     failure{
-      sh'python Gmail/failed.py '
+      sh'python Gmail1/failed.py '
     }
   }
   }
