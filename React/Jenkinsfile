@@ -1,14 +1,19 @@
 pipeline {
     agent any
+    environment {
+        // Set the PATH to include Node.js and npm
+        PATH = "${tool 'NodeJS'}/bin:${env.PATH}"
+    }
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout your Git repository
-                git 'https://github.com/Shub-123456/Shub_1234.git'
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         // Checkout your Git repository
+        //         git 'https://github.com/Shub-123456/Shub_1234.git'
+        //     }
+        // }
         stage('Build React App') {
             steps {
+        
                 // Install Node.js and build the React app
                 sh 'npm install'
                 sh 'npm run build'
