@@ -5,12 +5,12 @@ pipeline {
         PATH = "${tool 'NodeJS'}/bin:${env.PATH}"
     }
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         // Checkout your Git repository
-        //         git 'https://github.com/Shub-123456/Shub_1234.git'
-        //     }
-        // }
+        stage('Checkout') {
+            steps {
+                // Checkout your Git repository
+                git 'https://github.com/Shub-123456/Shub_1234.git'
+            }
+        }
         stage('Build React App') {
             steps {
         
