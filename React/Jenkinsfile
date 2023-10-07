@@ -1,30 +1,33 @@
 pipeline {
     agent any
-    environment {
-        // Set the PATH to include Node.js and npm
-        PATH = "${tool 'NodeJS'}/bin:${env.PATH}"
-    }
+
     stages {
-        stage('Checkout') {
+        stage('Fetch ZIP File') {
             steps {
-                // Checkout your Git repository
-                git 'https://github.com/Shub-123456/Shub_1234.git'
+                // Use a shell command or a Jenkins plugin (e.g., AWS CLI for S3) to download the ZIP file
+                sh 'wget -O your-app.zip https://example.com/path/to/your-app.zip'
             }
         }
-        stage('Build React App') {
+
+        stage('Unzip React App') {
             steps {
-        
-                // Install Node.js and build the React app
-                sh 'npm install'
-                sh 'npm run build'
+                sh 'unzip your-app.zip -d react-app'  // Unzip the ZIP file to a directory
             }
         }
-        stage('Build Docker Image') {
+
+        stage('Build and Push Docker Image') {
             steps {
-                // Build the Docker image
                 script {
-                    def app = docker.build('your-react-app', '.')
-                    app.push()
+                    def imageName = 'your-docker-image-name:your-tag'
+                    def dockerFile = 'Dockerfile'  // Path to your Dockerfile
+
+                    // Build Docker image
+                    docker.build(imageName, "-f ${dockerFile} .")
+
+                    // Push Docker image to a registry (e.g., Docker Hub)
+                    docker.withRegistry('https://your-docker-registry.com', 'your-docker-registry-credentials') {
+                        docker.image(imageName).push()
+                    }
                 }
             }
         }
