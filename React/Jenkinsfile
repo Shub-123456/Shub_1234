@@ -5,13 +5,13 @@ pipeline {
         stage('Fetch ZIP File') {
             steps {
                 // Use a shell command or a Jenkins plugin (e.g., AWS CLI for S3) to download the ZIP file
-                sh 'wget -O your-app.zip https://example.com/path/to/your-app.zip'
+                sh 'wget -O blogss.zip https://sagar0211.s3.ap-south-1.amazonaws.com/blogss.zip'
             }
         }
 
         stage('Unzip React App') {
             steps {
-                sh 'unzip your-app.zip -d react-app'  // Unzip the ZIP file to a directory
+                sh 'unzip blogss.zip -d react-app'  // Unzip the ZIP file to a directory
             }
         }
 
