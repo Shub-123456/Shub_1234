@@ -1,33 +1,36 @@
 pipeline {
     agent any
 
+    environment {
+        S3_BUCKET = 'sagar0211'
+        ZIP_FILE = 'blogss.zip'
+        DOCKER_IMAGE = 'React-app:v1.0'
+        SERVER_IP = '152.58.30.60'
+        SERVER_USER = 'ec2-user'
+        SERVER_SSH_KEY = credentials('your-ssh-key-credential-id')
+    }
+
     stages {
-        stage('Fetch ZIP File') {
-            steps {
-                // Use a shell command or a Jenkins plugin (e.g., AWS CLI for S3) to download the ZIP file
-                sh 'wget -O blogss.zip https://sagar0211.s3.ap-south-1.amazonaws.com/blogss.zip'
-            }
-        }
-
-        stage('Unzip React App') {
-            steps {
-                sh 'unzip blogss.zip -d react-app'  // Unzip the ZIP file to a directory
-            }
-        }
-
-        stage('Build and Push Docker Image') {
+        stage('Download Zip from S3') {
             steps {
                 script {
-                    def imageName = 'your-docker-image-name:your-tag'
-                    def dockerFile = 'Dockerfile'  // Path to your Dockerfile
+                    sh "aws s3 cp s3://${S3_BUCKET}/${ZIP_FILE} ."
+                }
+            }
+        }
 
-                    // Build Docker image
-                    docker.build(imageName, "-f ${dockerFile} .")
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh "docker build -t ${DOCKER_IMAGE} ."
+                }
+            }
+        }
 
-                    // Push Docker image to a registry (e.g., Docker Hub)
-                    docker.withRegistry('https://your-docker-registry.com', 'your-docker-registry-credentials') {
-                        docker.image(imageName).push()
-                    }
+        stage('Push Docker Image to Server') {
+            steps {
+                script {
+                    sh "docker save ${DOCKER_IMAGE} | gzip | ssh -i ${SERVER_SSH_KEY} ${SERVER_USER}@${SERVER_IP} 'gunzip | docker load'"
                 }
             }
         }
