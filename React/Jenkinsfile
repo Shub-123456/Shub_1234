@@ -7,7 +7,7 @@ pipeline {
         DOCKER_IMAGE = 'React-app:v1.0'
         SERVER_IP = '152.58.30.60'
         SERVER_USER = 'ec2-user'
-        SERVER_SSH_KEY = credentials('your-ssh-key-credential-id')
+        SERVER_SSH_KEY = credentials('docker-registry-credentials')
     }
 
     stages {
