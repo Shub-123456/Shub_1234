@@ -40,7 +40,7 @@ pipeline {
 
       steps{
 
-        sh 'python test.py'
+        sh 'python my_script.py'
 
       }
 
