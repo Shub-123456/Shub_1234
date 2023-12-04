@@ -7,5 +7,5 @@ instances = ec2.create_instances(
         MinCount=1,
         MaxCount=1,
         InstanceType="t2.micro",
-        KeyName="26oct"
+        KeyName="K8S"
     )
