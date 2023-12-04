@@ -14,7 +14,7 @@ pipeline {
 
           def gitRepoUrl = 'https://github.com/Shub-123456/Shub_1234.git'
 
-          def gitCredentialsId = 'git_token2' // Optional, if using credentials
+          def gitCredentialsId = 'git_token' // Optional, if using credentials
 
           // Clone the repository
 
