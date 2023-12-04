@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('test AWS credentials') {
             steps {
-                withAWS(credentials: 'jens', region: 'ap-south-1') 
+                withAWS(credentials: 'git-token', region: 'ap-south-1') 
                 {
                     sh 'python pipeline4/ultrafile.py'
                 }
