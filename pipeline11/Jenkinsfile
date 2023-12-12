@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Assuming your Python script is named 'my_script.py'
-                    def pythonScript = 'my_script.py'
+                    def pythonScript = 'pipeline11/my_script.py'
                     
                     // Execute the Python script using the 'sh' step
                     // You may need to specify the Python interpreter if it's not in the PATH
