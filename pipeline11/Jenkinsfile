@@ -27,7 +27,7 @@ pipeline {
     
     post {
         success {
-            echo 'Python script ran successfully'
+            echo 'Python script run successfully'
         }
         
         failure {
